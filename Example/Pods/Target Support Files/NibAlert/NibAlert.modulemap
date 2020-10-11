@@ -1,0 +1,6 @@
+framework module NibAlert {
+  umbrella header "NibAlert-umbrella.h"
+
+  export *
+  module * { export * }
+}

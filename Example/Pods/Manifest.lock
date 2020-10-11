@@ -1,0 +1,16 @@
+PODS:
+  - NibAlert (1.0.0)
+
+DEPENDENCIES:
+  - NibAlert (from `../`)
+
+EXTERNAL SOURCES:
+  NibAlert:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NibAlert: 4f168ec064b89a633322f1cdcddd1a4763c11c07
+
+PODFILE CHECKSUM: 83851f07cc4ab0f6ae28d089770c7f7816450476
+
+COCOAPODS: 1.8.4

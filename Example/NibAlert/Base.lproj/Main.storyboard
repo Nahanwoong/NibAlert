@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +18,47 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvB-Ke-9AZ">
+                                <rect key="frame" x="150" y="318.5" width="75" height="30"/>
+                                <state key="normal" title="Show Alert"/>
+                                <connections>
+                                    <action selector="onTappedAlertButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QvN-Im-G46"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfj-BM-YhW">
+                                <rect key="frame" x="128" y="368.5" width="119" height="30"/>
+                                <state key="normal" title="Show Alert Sheet"/>
+                                <connections>
+                                    <action selector="onTappedAlertSheetButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hhp-0h-pWM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-tI-iUe">
+                                <rect key="frame" x="187.5" y="50" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GOl-tI-iUe" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="8pi-J6-jWF"/>
+                            <constraint firstItem="QvB-Ke-9AZ" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="NEa-QD-O9N"/>
+                            <constraint firstItem="Pfj-BM-YhW" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="PjA-G0-Dhp"/>
+                            <constraint firstItem="QvB-Ke-9AZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="SHC-OY-RnY"/>
+                            <constraint firstItem="GOl-tI-iUe" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Xa6-iE-Kup"/>
+                            <constraint firstItem="Pfj-BM-YhW" firstAttribute="top" secondItem="QvB-Ke-9AZ" secondAttribute="bottom" constant="20" id="ttJ-xY-iSf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="alertButton" destination="QvB-Ke-9AZ" id="hth-2u-wee"/>
+                        <outlet property="alertSheetButton" destination="Pfj-BM-YhW" id="Y2n-Gl-KxD"/>
+                        <outlet property="textLabel" destination="GOl-tI-iUe" id="mYH-op-6wQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-166" y="133"/>
         </scene>
     </scenes>
 </document>

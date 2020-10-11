@@ -3,9 +3,4 @@ use_frameworks!
 target 'NibAlert_Example' do
   pod 'NibAlert', :path => '../'
 
-  target 'NibAlert_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end
