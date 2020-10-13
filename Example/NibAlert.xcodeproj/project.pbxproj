@@ -12,6 +12,8 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		D3653AB62535F8AD00F455D4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3653AB52535F8AD00F455D4 /* TableViewController.swift */; };
+		D3653ABB2535FF2600F455D4 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3653ABA2535FF2600F455D4 /* CellModel.swift */; };
 		D7F782EB2E49686E9B36BC58 /* Pods_NibAlert_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111B84763F9EFDE6FCAF5C1B /* Pods_NibAlert_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		75AC21BB72D086EB09A242C4 /* Pods-NibAlert_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NibAlert_Tests.release.xcconfig"; path = "Target Support Files/Pods-NibAlert_Tests/Pods-NibAlert_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A6B3C88BFAB82DFB6DDB9F63 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CC73A4FD138D6959FED016B9 /* Pods-NibAlert_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NibAlert_Example.release.xcconfig"; path = "Target Support Files/Pods-NibAlert_Example/Pods-NibAlert_Example.release.xcconfig"; sourceTree = "<group>"; };
+		D3653AB52535F8AD00F455D4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		D3653ABA2535FF2600F455D4 /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		DC32102F74769B95121E8B14 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +72,7 @@
 		607FACD21AFB9204008FA782 /* Example for NibAlert */ = {
 			isa = PBXGroup;
 			children = (
+				D3653AB92535FF1700F455D4 /* Content */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -104,6 +109,15 @@
 				400403E676DAB87B32840DA8 /* Pods_NibAlert_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3653AB92535FF1700F455D4 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				D3653AB52535F8AD00F455D4 /* TableViewController.swift */,
+				D3653ABA2535FF2600F455D4 /* CellModel.swift */,
+			);
+			name = Content;
 			sourceTree = "<group>";
 		};
 		DF88B18C17A4049A6608C5B6 /* Pods */ = {
@@ -236,7 +250,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				D3653AB62535F8AD00F455D4 /* TableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				D3653ABB2535FF2600F455D4 /* CellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

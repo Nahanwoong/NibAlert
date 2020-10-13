@@ -1,6 +1,10 @@
 import UIKit
 
-public class Alert {
+public protocol AlertContentViewable: UIViewController {
+    var alertContentSize: CGSize { get }
+}
+
+public final class Alert {
     
     // MARK: - Con(De)structor
     public init(_ title: String? = nil, _ message: String? = nil, style: UIAlertController.Style = .alert) {
@@ -10,10 +14,17 @@ public class Alert {
     }
     
     // MARK: - Properties
+    public typealias ConfigurationHandler = ((UITextField) -> Void)?
+    
+    private let CONTENTVIEWCONTROLLER_KEY: String = "contentViewController"
+    
+    public private(set) var alertController: UIAlertController?
     public private(set) var title: String?
     public private(set) var message: String?
     public private(set) var style: UIAlertController.Style = .alert
     public private(set) var options: [AlertOption] = []
+    public private(set) var configurations: [ConfigurationHandler] = []
+    public private(set) var contentView: AlertContentViewable? = nil
     
     // MARK: - Public Methods
     
@@ -32,6 +43,7 @@ public class Alert {
     @discardableResult
     public func setStyle(_ style: UIAlertController.Style) -> Alert {
         self.style = style
+        configurations = self.style == .alert ? configurations : []
         return self
     }
     
@@ -42,7 +54,7 @@ public class Alert {
     }
     
     @discardableResult
-    public func setOption(title: String? = nil, style: UIAlertAction.Style = .default, action: ((UIAlertAction) -> Void)? = nil) -> Alert {
+    public func setOption(title: String? = nil, style: UIAlertAction.Style = .default, action: ((UIAlertAction, UIAlertController) -> Void)? = nil) -> Alert {
         self.options = [ AlertOption(title: title, style: style, action: action) ]
         return self
     }
@@ -60,7 +72,7 @@ public class Alert {
     }
     
     @discardableResult
-    public func addOption(title: String? = nil, style: UIAlertAction.Style = .default, action: ((UIAlertAction) -> Void)? = nil) -> Alert {
+    public func addOption(title: String? = nil, style: UIAlertAction.Style = .default, action: ((UIAlertAction, UIAlertController) -> Void)? = nil) -> Alert {
         self.options.append(AlertOption(title: title, style: style, action: action))
         return self
     }
@@ -71,16 +83,74 @@ public class Alert {
         return self
     }
     
-    public func show(at view: UIViewController) {
+    @discardableResult
+    public func setTextField(_ configuration: ConfigurationHandler) -> Alert {
+        guard style == .alert else { return self }
+        self.configurations = [ configuration ]
+        return self
+    }
+    
+    @discardableResult
+    public func setTextFields(_ configurations: [ConfigurationHandler]) -> Alert {
+        guard style == .alert else { return self }
+        self.configurations = configurations
+        return self
+    }
+    
+    @discardableResult
+    public func addTextField(_ configuration: ConfigurationHandler) -> Alert {
+        guard style == .alert else { return self }
+        self.configurations.append(configuration)
+        return self
+    }
+    
+    @discardableResult
+    public func addTextFields(_ configurations: [ConfigurationHandler]) -> Alert {
+        guard style == .alert else { return self }
+        configurations.forEach { self.configurations.append($0) }
+        return self
+    }
+    
+    @discardableResult
+    public func setContentView(_ contentView: AlertContentViewable?) -> Alert {
+        guard style == .alert else { return self }
+        self.contentView = contentView
+        return self
+    }
+    
+    @discardableResult
+    public func show(at view: UIViewController) -> Alert {
         build(view)
+        return self
+    }
+    
+    public func hide() {
+        guard let alert = self.alertController else { return }
+        alert.dismiss(animated: true, completion: { self.alertController = nil })
     }
     
     // MARK: - Private Methods
     private func build(_ vc: UIViewController) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        guard let alert = alertController else { return }
         options.forEach { option in
-            alert.addAction( UIAlertAction(title: option.title, style: option.style, handler: { option.action($0) }) )
+            alert.addAction(UIAlertAction(title: option.title, style: option.style, handler: {
+                option.action($0, alert)
+                self.alertController = nil
+            }))
         }
+        
+        if self.style == .alert {
+            configurations.forEach { configuration in
+                alert.addTextField(configurationHandler: configuration)
+            }
+            
+            if let cv = contentView {
+                cv.preferredContentSize = cv.alertContentSize
+                alert.setValue(cv, forKey: CONTENTVIEWCONTROLLER_KEY)
+            }
+        }
+        
         vc.present(alert, animated: true)
     }
 }
@@ -90,13 +160,13 @@ public struct AlertOption {
     // MARK: - Properties
     private(set) var title: String?
     private(set) var style: UIAlertAction.Style
-    private(set) var action: ((UIAlertAction) -> Void)
+    private(set) var action: ((UIAlertAction, UIAlertController) -> Void)
     
     // MARK: - Con(De)structor
-    public init(title: String? = nil, style: UIAlertAction.Style = .default, action: ((UIAlertAction) -> Void)? = nil) {
+    public init(title: String? = nil, style: UIAlertAction.Style = .default, action: ((UIAlertAction, UIAlertController) -> Void)? = nil) {
         self.title = title
         self.style = style
         if let _action = action { self.action = _action }
-        else { self.action = { _ in } }
+        else { self.action = { (_ ,_) in } }
     }
 }

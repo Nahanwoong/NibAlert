@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,35 +20,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvB-Ke-9AZ">
-                                <rect key="frame" x="150" y="318.5" width="75" height="30"/>
-                                <state key="normal" title="Show Alert"/>
-                                <connections>
-                                    <action selector="onTappedAlertButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QvN-Im-G46"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfj-BM-YhW">
-                                <rect key="frame" x="128" y="368.5" width="119" height="30"/>
-                                <state key="normal" title="Show Alert Sheet"/>
-                                <connections>
-                                    <action selector="onTappedAlertSheetButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hhp-0h-pWM"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-tI-iUe">
                                 <rect key="frame" x="187.5" y="50" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBb-im-WnI">
+                                <rect key="frame" x="104" y="243.5" width="167" height="180"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KcE-eU-ISC">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="180"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvB-Ke-9AZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
+                                                <state key="normal" title="Show Alert"/>
+                                                <connections>
+                                                    <action selector="onTappedAlertButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QvN-Im-G46"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfj-BM-YhW">
+                                                <rect key="frame" x="0.0" y="50" width="167" height="30"/>
+                                                <state key="normal" title="Show Alert Sheet"/>
+                                                <connections>
+                                                    <action selector="onTappedAlertSheetButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hhp-0h-pWM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohs-L0-cHq">
+                                                <rect key="frame" x="0.0" y="100" width="167" height="30"/>
+                                                <state key="normal" title="Show TextField Alert"/>
+                                                <connections>
+                                                    <action selector="onTappedTextFieldAlertButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j1V-Mt-Vek"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zip-XB-cSb">
+                                                <rect key="frame" x="0.0" y="150" width="167" height="30"/>
+                                                <state key="normal" title="Show ContentView Alert"/>
+                                                <connections>
+                                                    <action selector="onTappedContentViewAlertButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kdp-M5-Qqd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KcE-eU-ISC" secondAttribute="bottom" id="4Eo-RY-Yl4"/>
+                                    <constraint firstItem="KcE-eU-ISC" firstAttribute="top" secondItem="BBb-im-WnI" secondAttribute="top" id="TTs-Ph-QxK"/>
+                                    <constraint firstItem="KcE-eU-ISC" firstAttribute="leading" secondItem="BBb-im-WnI" secondAttribute="leading" id="yGs-WT-vxh"/>
+                                    <constraint firstAttribute="trailing" secondItem="KcE-eU-ISC" secondAttribute="trailing" id="zeL-YE-hIN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="BBb-im-WnI" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="5bx-cV-MCr"/>
                             <constraint firstItem="GOl-tI-iUe" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="8pi-J6-jWF"/>
-                            <constraint firstItem="QvB-Ke-9AZ" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="NEa-QD-O9N"/>
-                            <constraint firstItem="Pfj-BM-YhW" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="PjA-G0-Dhp"/>
-                            <constraint firstItem="QvB-Ke-9AZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="SHC-OY-RnY"/>
                             <constraint firstItem="GOl-tI-iUe" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Xa6-iE-Kup"/>
-                            <constraint firstItem="Pfj-BM-YhW" firstAttribute="top" secondItem="QvB-Ke-9AZ" secondAttribute="bottom" constant="20" id="ttJ-xY-iSf"/>
+                            <constraint firstItem="BBb-im-WnI" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="wAU-xR-fHk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -61,4 +91,9 @@
             <point key="canvasLocation" x="-166" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

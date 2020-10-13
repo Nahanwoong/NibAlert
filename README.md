@@ -26,33 +26,49 @@ Alert("Test Title", "Test Message", style: .alert)
     .setTitle("New Title")
     .setMessage("New Message")
     .setStyle(.alert)
-    .addOption(title: "OK", style: .default, action: { action in
+    .addOption(title: "OK", style: .default, action: { (action, alert) in
         print("OK Clicked!")
     })
     .addOptions([
         AlertOption(title: "Cancel", style: .cancel),
-        AlertOption(title: "OK", style: .default, action: { (action) in
+        AlertOption(title: "OK", style: .default, action: { (action, alert) in
             print("OK Clicked!")
         }),
-        AlertOption(title: "Destructive", style: .destructive, action: { (action) in
+        AlertOption(title: "Destructive", style: .destructive, action: { (action, alert) in
             print("Destructive Clicked!")
         })
     ])
-    .setOption(title: "Cancel", style: .cancel, action: { action in
+    .setOption(title: "Cancel", style: .cancel, action: { (action, alert) in
         print("Cancel Clicked!")
     })
     .setOptions([
         AlertOption(title: "Cancel", style: .cancel),
-        AlertOption(title: "OK", style: .default, action: { (action) in
+        AlertOption(title: "OK", style: .default, action: { (action, alert) in
             print("OK Clicked!")
         }),
-        AlertOption(title: "Destructive", style: .destructive, action: { (action) in
+        AlertOption(title: "Destructive", style: .destructive, action: { (action, alert) in
             print("Destructive Clicked!")
         })
     ])
     .show(at: viewController)
+    
+Alert("Sign In")
+    .addTextField({ (textField) in
+        textField.placeholder = "Email"
+        textField.textContentType = .emailAddress
+    })
+    .addTextField({
+        $0.placeholder = "password"
+        $0.isSecureTextEntry = true
+    })
+    .addOption(title: "Cancel", style: .cancel)
+    .addOption(title: "OK", style: .default, action: { action, alert in
+        guard let textFields = alert.textFields, textFields.count == 2 else { return }
+        print("Email: \(textFields[0].text ?? "")")
+        print("Password: \(textFields[1].text ?? "")")
+    })
+    .show(at: self)
 ```
-
 
 > Alert Sheet
 ```
@@ -60,15 +76,15 @@ Alert("Test Title", "Test Message", style: .actionSheet)
     .setTitle("New Title")
     .setMessage("New Message")
     .setStyle(.actionSheet)
-    .addOption(title: "OK", style: .default, action: { action in
+    .addOption(title: "OK", style: .default, action: { (action, alert) in
         print("OK Clicked!")
     })
     .addOptions([
         AlertOption(title: "Cancel", style: .cancel),
-        AlertOption(title: "OK", style: .default, action: { (action) in
+        AlertOption(title: "OK", style: .default, action: { (action, alert) in
             print("OK Clicked!")    
         }),
-        AlertOption(title: "Destructive", style: .destructive, action: { (action) in
+        AlertOption(title: "Destructive", style: .destructive, action: { (action, alert) in
             print("Destructive Clicked!")
         })
     ])
@@ -77,10 +93,10 @@ Alert("Test Title", "Test Message", style: .actionSheet)
     })
     .setOptions([
         AlertOption(title: "Cancel", style: .cancel),
-        AlertOption(title: "OK", style: .default, action: { (action) in
+        AlertOption(title: "OK", style: .default, action: { (action, alert) in
             print("OK Clicked!")
         }),
-        AlertOption(title: "Destructive", style: .destructive, action: { (action) in
+        AlertOption(title: "Destructive", style: .destructive, action: { (action, alert) in
             print("Destructive Clicked!")
         })
     ])
@@ -94,7 +110,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 
-pod 'NibAlert', :tag => '1.0.0', :git => 'https://github.com/Nahanwoong/NibAlert'
+pod 'NibAlert', :tag => '1.1.0', :git => 'https://github.com/Nahanwoong/NibAlert'
 
 ```
 

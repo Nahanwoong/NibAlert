@@ -1,5 +1,5 @@
 PODS:
-  - NibAlert (1.0.0)
+  - NibAlert (1.1.0)
 
 DEPENDENCIES:
   - NibAlert (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NibAlert: 4f168ec064b89a633322f1cdcddd1a4763c11c07
+  NibAlert: ccaaaa73461db5f7213483d230524e30c824813d
 
 PODFILE CHECKSUM: 83851f07cc4ab0f6ae28d089770c7f7816450476
 
