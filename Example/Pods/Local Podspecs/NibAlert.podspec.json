@@ -1,9 +1,9 @@
 {
   "name": "NibAlert",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "summary": "This is NibAlert",
   "description": "This is NibAlert. Builder Pattern UIAlertController",
-  "homepage": "https://github.com/Nahanwoong/NibAlert",
+  "homepage": "https://github.com/nibdevn/NibAlert",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,11 @@
     "Nahanwoong": "nibdevn@gmail.com"
   },
   "source": {
-    "git": "https://github.com/Nahanwoong/NibAlert.git",
-    "tag": "1.1.0"
+    "git": "https://github.com/nibdevn/NibAlert.git",
+    "tag": "1.2.0"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
   "swift_versions": "4.2",
   "source_files": "NibAlert/Sources/**/*",

@@ -2,7 +2,7 @@
 # NibAlert
 
 ![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg)
-[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/Nahanwoong/NibAlert/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/nibdevn/NibAlert/blob/main/LICENSE)
 
 ## Summary
 
@@ -11,11 +11,10 @@
 - [Installation](#installation)
 - [Example](#example)
 
-
 ## Requirements
 
 - Swift 4.2
-- iOS 9.0+
+- iOS 10.0+
 
 
 ## Usage
@@ -109,9 +108,7 @@ NibAlert is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-
-pod 'NibAlert', :tag => '1.1.0', :git => 'https://github.com/Nahanwoong/NibAlert'
-
+pod 'NibAlert', :tag => '1.2.0', :git => 'https://github.com/nibdevn/NibAlert'
 ```
 
 ## Example

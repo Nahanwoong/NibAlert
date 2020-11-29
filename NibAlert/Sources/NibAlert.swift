@@ -151,7 +151,14 @@ public final class Alert {
             }
         }
         
-        vc.present(alert, animated: true)
+        if UIDevice.current.userInterfaceIdiom == .pad, let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = vc.view
+            popoverController.sourceRect = CGRect(x: vc.view.center.x, y: vc.view.bounds.maxY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+            vc.present(alert, animated: true)
+        } else {
+            vc.present(alert, animated: true)
+        }
     }
 }
 
